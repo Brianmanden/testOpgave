@@ -1,0 +1,16 @@
+﻿@{
+    Layout ="~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div ng-controller="TestController">
+
+    <label>Søg:</label>
+    <input type="text" ng-model="search" placeholder="Søg">
+    <hr>
+    <h1>Hello {{search}}!</h1>
+    <a ng-href="#" ng-click='testmethod("123")'>klik</a>
+    <h2>returnVal = {{returnVal}}</h2>
+    <h2>{{search}}</h2>
+</div>
