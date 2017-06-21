@@ -1,12 +1,14 @@
 ﻿(function () {
-    function TestController($scope) {
-        $scope.testmethod = function (input) {
-            console.log(input);
-            $scope.returnVal = "input = " + input;
+    'use strict';
+
+    function SearchController($scope, apiService) {
+        $scope.doSearch = function (resource, query) {
+            apiService.test(resource, query);
+            $scope.returnVal = "query = " + query;
         }
     }
 
     angular
         .module('spa', [])
-        .controller('TestController', ['$scope', TestController]);
+        .controller('SearchController', ['$scope', 'apiService',  SearchController]);
 })();

@@ -4,13 +4,24 @@
 }
 
 <h2>Index</h2>
-<div ng-controller="TestController">
+<div ng-controller="SearchController">
 
-    <label>Søg:</label>
-    <input type="text" ng-model="search" placeholder="Søg">
-    <hr>
-    <h1>Hello {{search}}!</h1>
-    <a ng-href="#" ng-click='testmethod("123")'>klik</a>
+    <label>Search the SWAPI:</label>
+    <input type="text" ng-model="searchQuery" placeholder="ie. Luke">
+    <button ng-href="#" ng-click='doSearch(resourceType, searchQuery)'>Search</button>
+    <br />
+    <label>
+        <input type="radio" ng-model="resourceType"  value="people"/>
+        People
+    </label>
+    <label>
+        <input type="radio" ng-model="resourceType" value="species" />
+        Species
+    </label>
+    <label>
+        <input type="radio" ng-model="resourceType" value="planets" />
+        Planets
+    </label>
     <h2>returnVal = {{returnVal}}</h2>
-    <h2>{{search}}</h2>
+
 </div>
