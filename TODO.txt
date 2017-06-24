@@ -1,4 +1,4 @@
-* remove all bower_components from repo
+* remove all bower_components from repo.
 
 * uninstall nuget angular and install bower/npm angular instead
   * https://blogs.msdn.microsoft.com/cdndevs/2015/02/17/using-bower-with-visual-studio/
