@@ -1,5 +1,3 @@
-* uninstall nuget angular and install bower/npm angular instead
-  * https://blogs.msdn.microsoft.com/cdndevs/2015/02/17/using-bower-with-visual-studio/
-	* "Getting files from bower_components"
-* install http
-* install q
+* arbejde med response data i app.js + services.js
+* lave nogle klikbare søgeeksempler i index.cshtml
+* arbejde med visning af data
