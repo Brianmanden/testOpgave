@@ -1,0 +1,23 @@
+{
+  "name": "webapplication2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brianmanden/testOpgave.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brianmanden/testOpgave/issues"
+  },
+  "homepage": "https://github.com/Brianmanden/testOpgave#readme",
+  "dependencies": {
+    "http": "0.0.0",
+    "q": "^1.5.0"
+  }
+}

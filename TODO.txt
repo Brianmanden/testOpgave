@@ -1,0 +1,2 @@
+* arbejde med response.data i app.js + services.js
+* lave et par klikbare søgeeksempler i index.cshtml 

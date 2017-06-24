@@ -1,20 +1,26 @@
 ﻿(function () {
     'use strict';
 
-    function apiService() {
+    function apiService($http, $log, $q) {
 
-        this.test = function (endpoint, query) {
-            switch (endpoint) {
+        var query = "http://swapi.co/api/";
+        var result;
+
+        this.getData = function (resource, searchString) {
+            switch (resource) {
                 case "people":
-                    console.log("people - " + query);
+                    console.log("people");
+                    query += "people/";
                     break;
 
                 case "species":
                     console.log("species");
+                    query += "species/";
                     break;
 
                 case "planets":
                     console.log("planets");
+                    query += "planets/";
                     break;
 
                 //case "films":
@@ -31,9 +37,28 @@
 
                 default:
                     console.log("default:");
-                    console.log("endpoint: " + endpoint);
-                    console.log("query: " + query);
+                    console.log("resource: " + resource);
+                    console.log("searchString: " + searchString);
             }
+
+            query += "?search=" + searchString;
+
+            console.log(query);
+
+            var deferred = $q.defer();
+            $http.get(query)
+                .then(function (response) {
+                    console.log(response.data);
+                    result = response.data.results[0];
+                    deferred.resolve(result);
+                },
+                function (msg, code) {
+                    $log.error(msg, code);
+                    deferred.reject(msg);
+                });
+
+            return deferred.promise;
+
         };
 
         return this;
