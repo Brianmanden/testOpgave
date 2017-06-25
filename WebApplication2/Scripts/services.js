@@ -3,24 +3,24 @@
 
     function apiService($http, $log, $q) {
 
-        var query = "http://swapi.co/api/";
-        var result;
+        var endpoint = "http://swapi.co/api/";
+        var resourceType, query, result;
 
         this.getData = function (resource, searchString) {
             switch (resource) {
                 case "people":
                     console.log("people");
-                    query += "people/";
+                    resourceType = "people/";
                     break;
 
                 case "species":
                     console.log("species");
-                    query += "species/";
+                    resourceType = "species/";
                     break;
 
                 case "planets":
                     console.log("planets");
-                    query += "planets/";
+                    resourceType = "planets/";
                     break;
 
                 //case "films":
@@ -36,21 +36,35 @@
                 //    break;
 
                 default:
-                    console.log("default:");
-                    console.log("resource: " + resource);
-                    console.log("searchString: " + searchString);
+                    console.log("default");
             }
 
-            query += "?search=" + searchString;
+            query = endpoint + resourceType +  "?search=" + searchString;
 
             console.log(query);
 
             var deferred = $q.defer();
             $http.get(query)
                 .then(function (response) {
+                    if (response.data.count > 0) {
+
+                        var dataObj = response.data.results[0];
+
+                        deferred.resolve({
+                            msg: 'Results:',
+                            name: dataObj.name,
+                            height: dataObj.height,
+                            mass: dataObj.mass,
+                            gender: dataObj.gender
+                        });
+                    } else {
+                        deferred.resolve({
+                            msg: 'Nothing found'
+                        });
+                    }
                     console.log(response.data);
                     result = response.data.results[0];
-                    deferred.resolve(result);
+                    //deferred.resolve(result);
                 },
                 function (msg, code) {
                     $log.error(msg, code);

@@ -1,5 +1,5 @@
 ﻿@{
-    Layout ="~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
 }
 
@@ -11,7 +11,7 @@
     <button ng-href="#" ng-click='doSearch(resourceType, searchQuery)'>Search</button>
     <br />
     <label>
-        <input type="radio" ng-model="resourceType"  value="people"/>
+        <input type="radio" ng-model="resourceType" value="people" />
         People
     </label>
     <label>
@@ -22,7 +22,11 @@
         <input type="radio" ng-model="resourceType" value="planets" />
         Planets
     </label>
-    <h2>returnVal = {{returnVal}}</h2>
-    <textarea ng-model="result"></textarea>
 
+    <dl class="dl-horizontal">
+        <dt class="resultsHeader">{{result.msg}}</dt>
+        <br /><br />
+        <dt ng-repeat-start="(key, value) in result" ng-hide="$first">{{key}}</dt>
+        <dd ng-repeat-end ng-hide="$first">{{value}}</dd>
+    </dl>
 </div>
