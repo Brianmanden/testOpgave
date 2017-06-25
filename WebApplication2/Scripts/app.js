@@ -12,6 +12,11 @@
             $scope.returnVal = "query = " + query;
             $scope.seaarchQuery = "";
         }
+
+        $scope.populateSearch = function (resource, query) {
+            $scope.resourceType = resource;
+            $scope.searchQuery = query;
+        }
     }
 
     angular

@@ -16,6 +16,20 @@ textarea {
     max-width: 280px;
 }
 
+label {
+    margin: 0 5px;
+}
+
 .resultsHeader {
     font-size: 150%;
+}
+
+.btn-group {
+    margin-bottom: 15px;
+}
+
+.btn-default {
+    /*padding: 5px;*/
+    margin: 0 10px;
+    font-size: 9px;
 }

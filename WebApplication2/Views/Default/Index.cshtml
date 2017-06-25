@@ -7,7 +7,7 @@
 <div ng-controller="SearchController">
 
     <label>Search the SWAPI:</label>
-    <input type="text" ng-model="searchQuery" placeholder="ie. Luke">
+    <input type="text" ng-model="searchQuery" ng-keydown="$event.keyCode === 13 && doSearch(resourceType, searchQuery)" placeholder="ie. Luke in People">
     <button ng-href="#" ng-click='doSearch(resourceType, searchQuery)'>Search</button>
     <br />
     <label>
@@ -23,9 +23,18 @@
         Planets
     </label>
 
+    <h6>Examples</h6>
+    <div class="btn-group btn-group-xs" role="group" aria-label="Extra-small button group">
+        <button type="button" class="btn btn-default" ng-click="populateSearch('people', 'Leia')">Leia in People</button>
+        <button type="button" class="btn btn-default" ng-click="populateSearch('species', 'Wookiee')">Wookiee in Species</button>
+        <button type="button" class="btn btn-default" ng-click="populateSearch('planets', 'Tatooine')">Tatooine in Planets</button>
+        <button type="button" class="btn btn-default" ng-click="populateSearch('people', 'Jabba')">Jabba in People</button>
+    </div>
+
     <dl class="dl-horizontal">
         <dt class="resultsHeader">{{result.msg}}</dt>
-        <br /><br />
+        <br />
+        <br />
         <dt ng-repeat-start="(key, value) in result" ng-hide="$first">{{key}}</dt>
         <dd ng-repeat-end ng-hide="$first">{{value}}</dd>
     </dl>

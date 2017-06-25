@@ -4,23 +4,23 @@
     function apiService($http, $log, $q) {
 
         var endpoint = "http://swapi.co/api/";
-        var resourceType, query, result;
+        var resourceType, query, result, objProps;
 
         this.getData = function (resource, searchString) {
             switch (resource) {
                 case "people":
-                    console.log("people");
                     resourceType = "people/";
+                    objProps = ["name", "height", "mass", "hair_color", "skin_color", "eye_color", "birth_year", "gender"];
                     break;
 
                 case "species":
-                    console.log("species");
                     resourceType = "species/";
+                    objProps = ["name", "classification", "designation", "average_height", "skin_colors", "hair_colors", "eye_colors", "average_lifespan", "language"];
                     break;
 
                 case "planets":
-                    console.log("planets");
                     resourceType = "planets/";
+                    objProps = ["name", "rotation_period", "diameter", "climate", "gravity", "terrain", "surface_water", "population"];
                     break;
 
                 //case "films":
@@ -48,15 +48,19 @@
                 .then(function (response) {
                     if (response.data.count > 0) {
 
+                        var resultObj = {};
                         var dataObj = response.data.results[0];
+                        var props = objProps.length;
 
-                        deferred.resolve({
-                            msg: 'Results:',
-                            name: dataObj.name,
-                            height: dataObj.height,
-                            mass: dataObj.mass,
-                            gender: dataObj.gender
-                        });
+                        resultObj["msg"] = "Results";;
+
+                        for (var i = 0; i < props; i++){
+                            resultObj[objProps[i]] = dataObj[objProps[i]];
+                        }
+
+                        console.log(resultObj);
+
+                        deferred.resolve(resultObj);
                     } else {
                         deferred.resolve({
                             msg: 'Nothing found'

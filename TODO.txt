@@ -1,4 +1,4 @@
-* arbejde med response data i app.js + services.js
-* lave nogle klikbare s�geeksempler i index.cshtml
-* arbejde med visning af data
-* lave "interest objects" for hver resourceType
+﻿* arbejde med response data i app.js + services.js ✓
+* lave nogle klikbare søgeeksempler i index.cshtml ✓
+* arbejde med visning af data ✓
+* lave "interest objects" for hver resourceType ✓
