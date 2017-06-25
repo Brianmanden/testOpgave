@@ -40,14 +40,11 @@
             }
 
             query = endpoint + resourceType +  "?search=" + searchString;
-
-            console.log(query);
-
+            
             var deferred = $q.defer();
             $http.get(query)
                 .then(function (response) {
                     if (response.data.count > 0) {
-
                         var resultObj = {};
                         var dataObj = response.data.results[0];
                         var props = objProps.length;
@@ -58,17 +55,14 @@
                             resultObj[objProps[i]] = dataObj[objProps[i]];
                         }
 
-                        console.log(resultObj);
-
                         deferred.resolve(resultObj);
                     } else {
                         deferred.resolve({
                             msg: 'Nothing found'
                         });
                     }
-                    console.log(response.data);
+
                     result = response.data.results[0];
-                    //deferred.resolve(result);
                 },
                 function (msg, code) {
                     $log.error(msg, code);
@@ -76,7 +70,6 @@
                 });
 
             return deferred.promise;
-
         };
 
         return this;
@@ -85,5 +78,4 @@
     angular
         .module('spa')
         .service('apiService', apiService);
-
 })();
